@@ -18,15 +18,15 @@ public class VideoApp
     {
         FileInputStream in = null;
         String encoding = "UTF-8";
-        String filePath = "/Users/cola/Downloads/xiaohongshu/在家健身/";
-        PrintWriter pw = new PrintWriter(new FileWriter("/Users/cola/Downloads/xiaohongshu/zaijiajianshen.txt"));
+        String filePath = "/Users/yushuai/IdeaProjects/xiaohongshu/note-运动健身/www.xiaohongshu.com/api/sns/v6/";
+        PrintWriter pw = new PrintWriter(new FileWriter(filePath+"result.txt"));
         File file = new File(filePath);
         // get the folder list
         File[] array = file.listFiles();
 
         for (int i = 0; i < array.length; i++) {
             System.out.println(filePath + array[i].getName());
-            if(array[i].getName().startsWith(".")){
+            if(array[i].getName().startsWith(".")|| array[i].getName().contains(".txt")){
                 continue;
             }
             File file1 = new File(filePath + array[i].getName());
@@ -54,14 +54,6 @@ public class VideoApp
                     Object shared_count = JSONObject.parseObject(item.toString()).get("shared_count");
 
 
-                    //主题
-                    Object topics = JSONObject.parseObject(item.toString()).get("topics");
-                    JSONArray jsonArraytopics = JSONArray.parseArray(topics.toString());
-                    Object topicsName = "";
-                    if(jsonArraytopics.size()>0) {
-                        topicsName= JSONObject.parseObject(jsonArraytopics.get(0).toString()).get("name");;
-                    }
-
                     //发布用户
                     Object user = JSONObject.parseObject(item.toString()).get("user");
                     Object nickname = JSONObject.parseObject(user.toString()).get("nickname");
@@ -70,8 +62,7 @@ public class VideoApp
 
                     String line = "在家健身" + '\t' + id + "\t"  + title  + "\t"  + type + "\t" +  time + "\t"+
                             liked_count + "\t"+ collected_count + "\t"+ comments_count + "\t" + shared_count + "\t"
-                            + topicsName + "\t"
-                            + "\t"+ userid + "\t" + nickname + "\t" + images ;
+                            + userid + "\t"+ userid + "\t" + nickname + "\t" + images ;
 
 
                     System.out.println(line);
