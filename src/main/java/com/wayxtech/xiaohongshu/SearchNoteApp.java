@@ -12,13 +12,13 @@ import java.io.PrintWriter;
  * Hello world!
  *
  */
-public class noteApp
+public class SearchNoteApp
 {
     public static void main( String[] args ) throws Exception
     {
         FileInputStream in = null;
         String encoding = "UTF-8";
-        String filePath = "/Users/yushuai/IdeaProjects/xiaohongshu/note-运动健身/";
+        String filePath = "/Users/cola/Downloads/xiaohongshu/减肥食谱/www.xiaohongshu.com/api/sns/v10/search/";
         PrintWriter pw = new PrintWriter(new FileWriter(filePath+"result.txt"));
         File file = new File(filePath);
         // get the folder list
@@ -60,7 +60,7 @@ public class noteApp
                         Object userid = JSONObject.parseObject(user.toString()).get("userid");
                         Object images = JSONObject.parseObject(user.toString()).get("images");
 
-                        String line = "运动健身" + '\t' + id + "\t"  + title  + "\t"  + type + "\t" +  time + "\t"+
+                        String line = "减肥食谱" + '\t' + id + "\t"  + title  + "\t"  + type + "\t" +  time + "\t"+
                                 liked_count + "\t"
                                 + userid + "\t" + nickname + "\t" + images ;
 
